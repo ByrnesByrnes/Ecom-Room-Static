@@ -1,11 +1,10 @@
 import React from 'react';
-import { Header, Hero } from '../components'
+import { Hero } from '../components'
 
-export function Home() {
+export default function Home() {
   return (
     <>
-    <Header />
-    <Hero />
+      <Hero />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-
+import {NavLink as Link} from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 export default function Nav({toggle, setToggle}) {
 
@@ -8,15 +9,12 @@ export default function Nav({toggle, setToggle}) {
 
 
   useEffect(() => {
-
-    
     const handler = event => {
-  
       if(!domNode.current.contains(event.target) && !navList.current.contains(event.target)) {
         setToggle(false)
       }
-        
     }
+
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   },[])
@@ -32,16 +30,16 @@ export default function Nav({toggle, setToggle}) {
     
       <ul className="nav__list" ref={navList}>
         <li className="nav__option">
-          <a href="home" className="nav__link active">home</a>
+          <Link to={ROUTES.HOME} className="nav__link active">home</Link>
         </li>
         <li className="nav__option">
-          <a href="#" className="nav__link">Shop</a>
+          <Link to={ROUTES.BROWSE} className="nav__link">Shop</Link>
         </li>
         <li className="nav__option">
-          <a href="#" className="nav__link">About</a>
+          <Link to={ROUTES.HOME} className="nav__link">About</Link>
         </li>
         <li className="nav__option">
-          <a href="#" className="nav__link">contact</a>
+          <Link to={ROUTES.HOME} className="nav__link">contact</Link>
         </li>
       </ul>
 
