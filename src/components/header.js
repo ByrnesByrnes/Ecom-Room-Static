@@ -9,7 +9,6 @@ export default function Header() {
     <div className="header__logo">
       <img src="/images/logo.svg" alt="room"/>
     </div>
-
     <Nav toggle={toggle} setToggle={setToggle}/>
     </header>
   )

@@ -111,4 +111,17 @@
       }
     }
   }
+
+  @media(min-width: 800px) {
+    &__list {
+      transform: translateY(0);
+    }
+    &__link {
+      color: $white;
+    }
+
+    & .hamburger {
+      display: none;
+    }
+  }
 }

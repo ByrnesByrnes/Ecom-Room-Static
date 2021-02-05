@@ -1,11 +1,12 @@
 .header {
   height: 100px;
- 
   position: fixed;
   width: 100%;
+  max-width: 1440px;
   padding: 30px;
   display: flex;
   justify-content: space-between;
+  z-index: 20;
 
   &__logo {
     color: $white;
@@ -15,6 +16,14 @@
     transform: translate(-50%, -50%);
   }
 
-  // temporary fix for background image
-  
+  @media(min-width: 800px) {
+    align-items: center;
+    padding: 50px;
+
+    &__logo {
+      position: static;
+      left: unset;
+      transform: translateX(0);
+    }
+  }
 }

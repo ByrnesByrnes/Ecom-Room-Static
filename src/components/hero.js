@@ -1,20 +1,21 @@
 import React from 'react';
-
+import { Carousel } from '../components'
 export default function Hero() {
   return (
     <section className="hero">
-    <div className="hero__img">
-      <img src="images/desktop-image-hero-1.jpg" alt=""/>
-    </div>
+      <Carousel />
+      <div className="hero__content">
 
-    <div className="hero__content">
-      <h1 className="hero__title">Discovery innovative ways to decorate</h1>
-      <p className="hero__text">We provide unmatched quality. comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love.</p>
-      <div className="hero__link">
-        <a href="#" >Shop Now</a>
-        <img src="/images/icon-arrow.svg" alt="Forward Arrow"/>
+        <img className="hero__image" src="/images/image-about-dark.jpg" alt="" />
+
+        <div className="hero__info">
+          <h2 className="hero__subtitle">About Our furniture</h2>
+          <p className="hero__text">Our multifunctional collection blends design and function to suit your individual taste. Make each room unique, or pick a cohesive theme that best express your interests and what inspires you. Find the furniture pieces you need, from traditional to contemporary styles or anything in between. Product specialists are available to help you create your dream space.</p>
+        </div>
+
+        <img className="hero__image" src="/images/image-about-light.jpg" alt="" />
+
       </div>
-    </div>
     </section>
   )
 }
