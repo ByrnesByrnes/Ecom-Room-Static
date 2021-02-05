@@ -1,11 +1,10 @@
 import './dist/css/style.css'
+import { Home } from './pages/home'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-    <h1>Hello Reinier</h1>
-      </header>
+    <div>
+      <Home />
     </div>
   );
 }
