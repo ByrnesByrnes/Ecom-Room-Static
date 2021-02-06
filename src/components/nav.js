@@ -29,17 +29,21 @@ export default function Nav({toggle, setToggle}) {
       </div>
     
       <ul className="nav__list" ref={navList}>
-        <li className="nav__option">
-          <Link to={ROUTES.HOME} className="nav__link active">home</Link>
-        </li>
-        <li className="nav__option">
+        
+        <li 
+        onClick={() => setToggle(false)}
+        className="nav__option">
           <Link to={ROUTES.BROWSE} className="nav__link">Shop</Link>
         </li>
-        <li className="nav__option">
+        <li 
+          onClick={() => setToggle(false)}
+          className="nav__option">
           <Link to={ROUTES.HOME} className="nav__link">About</Link>
         </li>
-        <li className="nav__option">
-          <Link to={ROUTES.HOME} className="nav__link">contact</Link>
+        <li 
+          onClick={() => setToggle(false)}
+          className="nav__option">
+          <Link to={ROUTES.HOME} className="nav__link">Contact</Link>
         </li>
       </ul>
 

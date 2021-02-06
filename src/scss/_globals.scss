@@ -47,7 +47,7 @@ h2 {
 }
 p {
   color: $darkGray;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 img {
@@ -72,5 +72,17 @@ a {
   }
   h2 {
     font-size: 2rem;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

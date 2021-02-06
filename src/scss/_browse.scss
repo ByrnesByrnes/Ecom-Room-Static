@@ -5,4 +5,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+  &__content {
+    animation: fade-in .3s linear;
+  }
+
 }

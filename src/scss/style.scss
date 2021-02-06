@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'globals';
+@import 'mixins';
 
 @import 'header';
 @import 'hero';
@@ -7,3 +8,6 @@
 @import 'carousel';
 @import 'card';
 @import 'browse';
+@import 'loader';
+@import 'product';
+@import 'cart';

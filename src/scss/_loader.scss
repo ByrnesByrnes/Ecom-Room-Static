@@ -1,0 +1,35 @@
+.loader {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  
+  &:before {
+    content: "";
+    height: 50px;
+    width: 50px;
+    border: 6px solid $black;
+    border-color: $black transparent;
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+  }
+
+  @media (min-width: 800px) {
+    &:before {
+      height: 90px;
+      width: 90px;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

@@ -1,0 +1,37 @@
+.product {
+ 
+  padding: 20px;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  max-width: 1200px;
+
+  &__images {
+
+    & > img {
+      min-width: 250px;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+  } 
+
+  &__description {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: $darkGray;
+  }
+  &__button {
+    @include button;
+  }
+  
+  @media(min-width: 800px) {
+    margin: 0 auto;
+    display: flex;
+    gap: 0 5rem;
+  }
+}
+
+
