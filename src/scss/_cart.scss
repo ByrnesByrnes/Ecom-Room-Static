@@ -1,48 +1,48 @@
 .cart {
   padding: 20px;
   
-  &__table {
+  &__content {
+    display: flex;
+    grid-gap: 0 20px;
+    margin: 0 auto;
     width: 100%;
-    border-spacing: 0;
+    flex-wrap: wrap-reverse;
+    align-items: flex-end;
   }
 
-  &__head {
-  
+  &__left {
+    min-width: 400px;
+    width: 100%;
+ 
   }
-  &__heading { 
-    height: 80px;
-    padding: 20px;
-    text-align: right;
+
+  &__headers {
+    display:flex;
+    justify-content: space-between;
     border-bottom: 1px solid $darkGray;
-
-    &:first-of-type {
-      text-align: left;
-    }
+    margin-bottom: 20px;
   }
   
-  &__data {
-    padding: 40px 0;
-    text-align: right;
+  &__buy-box {
+    min-width: 300px;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid blue;
+  
+  }
 
-    &:first-of-type {
+  &__checkout {
+    @include button;
+  }
+
+  @media (min-width: 1000px) {
+    &__left {
+      width: calc(100% - 450px);
       
-      text-align: left;
     }
-  }
-  &__name {margin: 0;}
-  &__info {
-    height: 100%;
-    vertical-align: center;
-    > button {
-      @include button;
-      margin: 0;
-      background-color: $crimson;
-      width: fit-content;
-    }
-  }
 
-  img { 
-    float: left;
-    width: 150px;
+    &__buy-box {
+      max-width: calc(450px - 20px);
+    }
   }
 }

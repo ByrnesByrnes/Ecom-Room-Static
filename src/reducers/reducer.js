@@ -2,6 +2,10 @@ export const state = {
   cart: []
 }
 
+
+export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item.price, 0)
+
+
 export const reducer = (state, action) => {
   switch(action.type) {
     case "ADD_TO_CART":
