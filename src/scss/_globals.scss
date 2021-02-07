@@ -60,6 +60,11 @@ img {
  object-fit: contain;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 li {
   list-style: none;
 }
@@ -88,5 +93,39 @@ a {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  20% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  20% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  80% {
+    
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

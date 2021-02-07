@@ -3,30 +3,14 @@ import { useParams } from 'react-router-dom'
 import {BsArrowRight} from 'react-icons/bs'
 import { Loader } from '../components'
 import { StateContext} from '../context/state'
+import {GetData} from '../api/getData'
 
 export default function Product() {
-  const [product, setProduct] = useState({})
   const [ state, dispatch] = StateContext()
 
-
   const { id } = useParams()
-  const baseUrl = `https://fakestoreapi.com/products/${id}`
 
-  useEffect(() => {
-    const getData = async () => {
-
-      try {
-        const response = await fetch(baseUrl)
-        const data = await response.json()
-        if (response.status === 200) {
-          setProduct(data)
-        }
-      } catch (error) {
-        console.log(error => console.error(error))
-      }
-    }
-    getData()
-  }, [])
+  const [product, loading] = GetData(id)
 
   const addToCart = (id) => {
     if (id === product.id) {  
@@ -37,7 +21,7 @@ export default function Product() {
     }
   }
 
-  return  (
+  return loading ? <Loader /> : (
     <section className="product">
       <div className="product__images">
         <img src={product.image} alt=""/>

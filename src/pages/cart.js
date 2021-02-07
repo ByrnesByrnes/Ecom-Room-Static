@@ -26,9 +26,13 @@ export default function Cart() {
             {Subtotal(state.cart)}
           <button className="cart__checkout">Proceed to Checkout</button>
         </div>
-
-
+      
       </div>
+      <div className="cart__total">
+            <span>Subtotal: {Subtotal(state.cart)} </span>
+            <button className="cart__checkout">Checkout</button>
+      </div>
+       
     </section>
   )
 }

@@ -8,6 +8,7 @@
     width: 100%;
     flex-wrap: wrap-reverse;
     align-items: flex-end;
+    border-bottom: 1px solid $darkGray;
   }
 
   &__left {
@@ -27,12 +28,22 @@
     min-width: 300px;
     width: 100%;
     max-width: 100%;
-    border: 1px solid blue;
-  
+    border: 1px solid $darkGray;
+    padding: 20px;
   }
 
   &__checkout {
     @include button;
+    background-color: $crimson;
+
+    &:hover {
+      background-color: $black;
+    }
+  }
+
+  &__total {
+    padding: 20px 0;
+    float: right;
   }
 
   @media (min-width: 1000px) {

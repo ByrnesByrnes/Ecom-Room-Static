@@ -7,14 +7,20 @@
   max-width: 1200px;
 
   &__images {
+    animation: fade-in-left 1s ease-in forwards;
 
     & > img {
       min-width: 250px;
       width: 100%;
       max-width: 500px;
     }
-    
-  } 
+  }
+  
+  &__content {
+    opacity: 0;
+    animation: fade-in-right 1s ease-in forwards;
+    animation-delay: .5s;
+  }
 
   &__description {
     margin: 20px 0;

@@ -1,6 +1,5 @@
 .cart-item {
   display: flex;
-  border: 1px solid red;
   margin-bottom: 20px;
   padding: 20px;
   width: 100%;
@@ -37,6 +36,7 @@
 
   &__remove {
     @include  button;
+    width: fit-content;
   }
 
 }
