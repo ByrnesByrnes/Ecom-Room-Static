@@ -4,7 +4,8 @@ import {
   Home,
   Browse ,
   Product,
-  Checkout
+  Checkout,
+  Cart,
 } from './pages'
 import { Header } from './components'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -21,6 +22,9 @@ export default function App() {
       )}
     </StateContextConsumer>
       <Switch>
+        <Route exact path={ROUTES.CART}>
+          <Cart />
+        </Route>
         <Route exact path={ROUTES.CHECKOUT}>
           <Checkout />
         </Route>

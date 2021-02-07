@@ -25,6 +25,10 @@ body {
 
 section {
   margin-top: 100px;
+  
+  @media(min-width: 800px) {
+    padding: 0;
+  }
 }
 
 

@@ -22,7 +22,7 @@ export default function Header({ cart }) {
         <div>
           <Link
             className={`header__side__right ${toggle ? 'open' : ''}`}
-            to={ROUTES.CHECKOUT}>
+            to={ROUTES.CART}>
             <div 
               style={{
                 opacity: cart.length > 0 ? '1': '0'

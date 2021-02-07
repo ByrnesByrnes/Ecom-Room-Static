@@ -28,8 +28,7 @@ export default function Browse() {
     }
   
     getData()
-
-   
+    
   }, [])
 
   console.log(loading)
