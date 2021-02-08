@@ -811,7 +811,6 @@ a {
 }
 
 .cart__left {
-  min-width: 400px;
   width: 100%;
 }
 
@@ -824,6 +823,10 @@ a {
           justify-content: space-between;
   border-bottom: 1px solid #a1a1a1;
   margin-bottom: 20px;
+}
+
+.cart__empty {
+  width: 100%;
 }
 
 .cart__buy-box {
@@ -877,6 +880,7 @@ a {
 
 @media (min-width: 1000px) {
   .cart__left {
+    min-width: 400px;
     width: calc(100% - 450px);
   }
   .cart__buy-box {

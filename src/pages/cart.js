@@ -22,7 +22,7 @@ export default function Cart() {
               {state.cart.map((product, i) => (
                 <CartItem key={i} product={product} />
               ))}
-            </> : <div>Your Cart is Empty</div>
+            </> : <div className="cart__empty">Your Cart is Empty</div>
           }
         </div>
 
