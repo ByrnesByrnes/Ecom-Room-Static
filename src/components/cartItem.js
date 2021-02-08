@@ -20,7 +20,10 @@ export default function CartItem({ product }) {
 
         <div className="cart-item__content">
           <h4 className="cart-item__title">{product.title}</h4>
-        quantity: {product.quantity}
+          <span className="cart-item__quantity">
+            Quantity: 
+            <span>{product.quantity}</span>
+          </span>
         <button
             onClick={() => removeFromCart(product.id)}
             className="cart-item__remove"
@@ -29,7 +32,7 @@ export default function CartItem({ product }) {
       </div>
 
         <div className="cart-item__right">
-          <p className="cart-item__price">{product.price}</p>
+          <p className="cart-item__price">${product.price}</p>
         </div>
     </div>
   )
