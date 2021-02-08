@@ -12,13 +12,18 @@ export default function Cart() {
       <div className="cart__content">
         <div className="cart__left">
           <h1 className="cart__title">Shopping Cart</h1>
-          <div className="cart__headers">
-            <h3>Product</h3>
-            <h3>Price</h3>
-          </div>
-          {state.cart.map((product, i) => (
-            <CartItem key={i} product={product} />
-          ))}
+          {state.cart.length !== 0 ?
+            <>
+              <div className="cart__headers">
+                <h3>Product</h3>
+                <h3>Price</h3>
+              </div>
+
+              {state.cart.map((product, i) => (
+                <CartItem key={i} product={product} />
+              ))}
+            </> : <div>Your Cart is Empty</div>
+          }
         </div>
 
         <div className="cart__buy-box">
@@ -26,13 +31,13 @@ export default function Cart() {
             {Subtotal(state.cart)}
           <button className="cart__checkout">Proceed to Checkout</button>
         </div>
-      
+
       </div>
       <div className="cart__total">
-            <span>Subtotal: {Subtotal(state.cart)} </span>
-            <button className="cart__checkout">Checkout</button>
+        <span>Subtotal: {Subtotal(state.cart)} </span>
+        <button className="cart__checkout">Checkout</button>
       </div>
-       
+
     </section>
   )
 }

@@ -6,8 +6,11 @@ export default function Browse() {
   const [selection, setSelection] = useState('')
 
   const [products, loading] = GetData()
-  console.log(selection)
-  
+ 
+  const productsFiltered = products.filter(product => product.category === selection)
+
+  const results = selection ? productsFiltered : products
+
   return loading ? <Loader /> : (
     <section className="browse">
       <SideBar 
@@ -16,7 +19,7 @@ export default function Browse() {
         setSelection={setSelection}
       />
       <div className="browse__content">
-        {products.map(product => (
+        {results.map(product => (
           <Card key={product.id} product={product} />
         ))}
       </div>

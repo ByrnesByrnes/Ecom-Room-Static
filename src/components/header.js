@@ -6,7 +6,7 @@ import * as ROUTES from '../constants/routes'
 
 export default function Header({ cart }) {
   const [toggle, setToggle] = useState(false)
-  console.log(cart.length)
+ 
   return (
     <header className="header">
       <div className="header__content">

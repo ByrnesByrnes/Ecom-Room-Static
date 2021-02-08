@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { heroSlides as slides } from '../heroData'
-
+import { NavLink as Link } from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0)
@@ -64,9 +65,12 @@ export default function Carousel() {
           <h1 className="carousel__title">{slide.title}</h1>
           <p className="carousel__text">{slide.text}</p>
           <div className="carousel__link">
-            <a className="carousel" href="#" >Shop Now
+            <Link 
+              className="carousel"
+              to={ROUTES.BROWSE}
+            >Shop Now
               <img src="/images/icon-arrow.svg" alt="Forward Arrow" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ export const state = {
 }
 
 
-export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item.price, 0)
+export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item.price, 0).toFixed(2)
 
 
 export const reducer = (state, action) => {

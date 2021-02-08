@@ -5,7 +5,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: calc(100% - 200px);
+    width: 100%;
+   
   }
 
   &__content {
@@ -15,5 +16,9 @@
 
   @media (min-width: 800px) {
     display: flex;
+
+    &__content {
+      max-width: calc(100% - 200px);
+    }
   }
 }

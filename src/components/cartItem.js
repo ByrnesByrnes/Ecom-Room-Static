@@ -20,7 +20,7 @@ export default function CartItem({ product }) {
 
         <div className="cart-item__content">
           <h4 className="cart-item__title">{product.title}</h4>
-        quantity: 1
+        quantity: {product.quantity}
         <button
             onClick={() => removeFromCart(product.id)}
             className="cart-item__remove"

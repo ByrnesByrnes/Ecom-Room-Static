@@ -21,6 +21,14 @@
     animation: fade-in-right 1s ease-in forwards;
     animation-delay: .5s;
   }
+  &__quantity {
+    width: 40px;
+    height: 30px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid $black;
+    border-radius: 2px;
+  }
 
   &__description {
     margin: 20px 0;
@@ -29,6 +37,7 @@
     border-bottom: 1px solid;
     border-color: $darkGray;
   }
+
   &__button {
     @include button;
   }
