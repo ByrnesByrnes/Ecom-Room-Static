@@ -4,16 +4,20 @@
   overflow: hidden;
   width: 100%;
   display: flex;
- 
+  
+
   &__slide {
     width: 100%;
   }
+
   &__image {
-    width: auto !important;
+    overflow: hidden;
+    width: 100%;
  
   }
 
   &__content {
+  
     padding: 2rem;
     width: 100%;
    
@@ -34,8 +38,9 @@
   &__arrows {
     display: flex;
     position: absolute;
-    top: 28.45rem;
+    top: 28.75rem;
     right: 0;
+    
     > * {
       cursor: pointer;
       padding: 25px 30px;
@@ -56,8 +61,9 @@
 
     &__content {
       min-width: 600px;
+      max-width: 600px;
       padding: 4.5rem;
-   
+
     }
 
     &__link { 
@@ -67,7 +73,7 @@
     &__arrows {
       top: unset;
       bottom: 0;
-      right: 31.4%;
+      right: 452px;
     };
   }
 }

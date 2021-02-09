@@ -18,10 +18,10 @@ export default function AddToCart({product, text, svg, quantity=1}) {
         }
       })
     } 
-    const _ = setTimeout(() => {
+    setTimeout(() => {
       setMessage('')
     }, 2000);
-    return () => clearTimeout(_)
+    
   }
 
   return (

@@ -22,19 +22,24 @@
   &:hover {
     background-color: rgb(250, 247, 232);
   }
+  &__title {
+    text-align: center;
+  }
 
   &__info {
     display: flex;
     gap: 0 10px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   @media(min-width: 800px) {
     align-items: stretch;
+
     &__image {
       height: 200px;
     }
+ 
 
     max-width: 300px;
   }

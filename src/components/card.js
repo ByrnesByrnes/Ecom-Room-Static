@@ -13,10 +13,10 @@ export default function Card({ product }) {
         <div className="card__image">
           <img src={product.image} alt={product.description} />
         </div>
-      </Link>
-      <Link to={`${ROUTES.BROWSE}/${product.id}`}>
         <h3 className="card__title">{product.title}</h3>
       </Link>
+      
+      
       {/* <p className="card__text">{product.description}</p> */}
       <div className="card__info">
         <p className="card__price">${product.price.toFixed(2)}</p>
