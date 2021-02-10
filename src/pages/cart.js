@@ -2,6 +2,8 @@ import React from 'react';
 import { StateContext } from '../context/state'
 import { Subtotal } from '../reducers/reducer'
 import { CartItem } from '../components'
+import { Link } from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 export default function Cart() {
   const [state, dispatch] = StateContext()
@@ -18,7 +20,6 @@ export default function Cart() {
                 <h3>Product</h3>
                 <h3>Price</h3>
               </div>
-
               {state.cart.map((product, i) => (
                 <CartItem key={i} product={product} />
               ))}
@@ -29,13 +30,13 @@ export default function Cart() {
         <div className="cart__buy-box">
           total and subtotal
             {Subtotal(state.cart)}
-          <button className="cart__checkout">Proceed to Checkout</button>
+          <Link to={ROUTES.CHECKOUT} className="cart__checkout">Proceed to Checkout</Link>
         </div>
 
       </div>
       <div className="cart__total">
         <span>Subtotal: {Subtotal(state.cart)} </span>
-        <button className="cart__checkout">Checkout</button>
+        <Link to={ROUTES.CHECKOUT} className="cart__checkout">Checkout</Link>
       </div>
 
     </section>

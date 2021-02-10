@@ -37,7 +37,8 @@
   &__checkout {
     @include button;
     background-color: $crimson;
-
+    width: fit-content;
+    
     &:hover {
       background-color: $black;
     }

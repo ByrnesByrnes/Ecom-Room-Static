@@ -1,7 +1,7 @@
 import React from 'react';
 import { StateContext } from '../context/state'
 
-export default function CartItem({ product }) {
+export default function CartItem({ product, remove = true }) {
   const [state, dispatch] = StateContext()
 
   const removeFromCart = id => {
@@ -21,19 +21,21 @@ export default function CartItem({ product }) {
         <div className="cart-item__content">
           <h4 className="cart-item__title">{product.title}</h4>
           <span className="cart-item__quantity">
-            Quantity: 
+            Quantity:
             <span>{product.quantity}</span>
           </span>
-        <button
-            onClick={() => removeFromCart(product.id)}
-            className="cart-item__remove"
-          >remove</button>
+          {remove &&
+            <button
+              onClick={() => removeFromCart(product.id)}
+              className="cart-item__remove"
+            >remove</button>
+          }
         </div>
       </div>
 
-        <div className="cart-item__right">
-          <p className="cart-item__price">${product.price}</p>
-        </div>
+      <div className="cart-item__right">
+        <p className="cart-item__price">${product.price}</p>
+      </div>
     </div>
   )
 };

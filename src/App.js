@@ -22,10 +22,10 @@ export default function App() {
       )}
     </StateContextConsumer>
       <Switch>
-        <Route exact path={ROUTES.CART}>
+        <Route  path={ROUTES.CART}>
           <Cart />
         </Route>
-        <Route exact path={ROUTES.CHECKOUT}>
+        <Route  path={ROUTES.CHECKOUT}>
           <Checkout />
         </Route>
         <Route exact path={ROUTES.BROWSE}>
