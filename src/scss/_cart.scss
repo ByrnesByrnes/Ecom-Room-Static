@@ -38,7 +38,7 @@
     @include button;
     background-color: $crimson;
     width: fit-content;
-    
+   
     &:hover {
       background-color: $black;
     }
@@ -46,7 +46,9 @@
 
   &__total {
     padding: 20px 0;
-    float: right;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   @media (min-width: 1000px) {

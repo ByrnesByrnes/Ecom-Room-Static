@@ -38,12 +38,12 @@ export default function Nav({toggle, setToggle}) {
         <li 
           onClick={() => setToggle(false)}
           className="nav__option">
-          <Link to={ROUTES.HOME} className="nav__link">About</Link>
+          <Link to={ROUTES.ABOUT} className="nav__link">About</Link>
         </li>
         <li 
           onClick={() => setToggle(false)}
           className="nav__option">
-          <Link to={ROUTES.HOME} className="nav__link">Contact</Link>
+          <Link to={ROUTES.CONTACT} className="nav__link">Contact</Link>
         </li>
       </ul>
 

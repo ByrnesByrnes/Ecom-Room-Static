@@ -10,7 +10,21 @@ export default function ShippingForm(params) {
     state: '',
     zipcode: ''
   })
+  const sampleKey = 'sand_E/LEM4ewQ5p3kO22mrFfraRP/G190y1L3gMXk+1tupk='
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sampleKey}`
+    },
+    body: '{"origin_postal_code":"059405","destination_country_alpha2":"US","destination_postal_code":"10030","taxes_duties_paid_by":"Sender","is_insured":false,"apply_shipping_rules":true}'
+  };
   
+  fetch('https://api.easyship.com/rate/v1/rates', options)
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
   const handleForm = event => setForm({...form, [event.target.name]: event.target.value})
 
   console.log(form)
