@@ -41,11 +41,59 @@
   &__button {
     @include button;
   }
-  
+
+  &__socials {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+  &__social {
+    margin: 0 10px;
+    color: $darkGray;
+    font-size: 20px;
+    transition: .4s ease-in-out;
+
+    &:hover {
+      color: $crimson;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+   
+    width: 100%;
+ 
+    
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 150px;
+    color: $darkGray;
+    transition: .4s ease-in-out;
+
+    &:hover {
+      color: $crimson;
+    }
+  }
+
+
+
   @media(min-width: 800px) {
     margin: 0 auto;
     display: flex;
     gap: 0 5rem;
+
+    &__arrows {
+      justify-content: space-between;
+      max-width: 400px;
+      min-width: 350px;
+    }
   }
 }
 

@@ -28,14 +28,13 @@ export default function Cart() {
         </div>
 
         <div className="cart__buy-box">
-          total and subtotal
-            {Subtotal(state.cart)}
+          Subtotal ${Subtotal(state.cart)}
           <Link to={ROUTES.CHECKOUT} className="cart__checkout">Proceed to Checkout</Link>
         </div>
 
       </div>
       <div className="cart__total">
-        <span>Subtotal: {Subtotal(state.cart)} </span>
+        <span>Subtotal: ${Subtotal(state.cart)} </span>
         <Link to={ROUTES.CHECKOUT} className="cart__checkout">Checkout</Link>
       </div>
 
