@@ -1,13 +1,16 @@
 const localCart = localStorage.getItem('cart')
+const localFavorites = localStorage.getItem('favorites')
 
 export const state = {
-  cart: JSON.parse(localCart) || []
+  cart: JSON.parse(localCart) || [],
+  favorites: JSON.parse(localFavorites) || [],
+  wishList: []
 }
 
 
-const setLocalStorage = (state, action=false) => {
+const setLocalStorage = (state, action = false, position = 'cart') => {
   localStorage.setItem(
-    'cart',
+    position,
     JSON.stringify(action ? [...state, action.payload] : [...state])
   )
 }
@@ -16,9 +19,9 @@ export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item?.pri
 
 
 export const reducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case "ADD_TO_CART":
-      
+
       setLocalStorage(state.cart, action)
 
       return state = {
@@ -28,14 +31,29 @@ export const reducer = (state, action) => {
     case "REMOVE_FROM_CART":
       const index = state.cart.findIndex(product => product.id === action.payload)
       const newCart = [...state.cart]
-  
+
       index >= 0 ? newCart.splice(index, 1) : console.error('Product does not exist.')
-      
+
       setLocalStorage(newCart)
 
       return state = {
         ...state,
         cart: [...newCart]
+      }
+    case "ADD_TO_FAVORITES":
+      setLocalStorage(state.favorites, action, 'favorites')
+      return state = {
+        ...state,
+        favorites: [...state.favorites, action.payload]
+      }
+
+
+    case "REMOVE_FROM_FAVORITES":
+      const newFavorites = state.favorites.filter(product => product.id !== action.payload.id)
+      setLocalStorage(newFavorites, false, 'favorites')
+      return state = {
+        ...state,
+        favorites: [...newFavorites]
       }
     default:
       return state

@@ -7,7 +7,6 @@ export default function Nav({toggle, setToggle}) {
   const domNode = useRef()
   const navList= useRef()
 
-
   useEffect(() => {
     const handler = event => {
       if(!domNode.current.contains(event.target) && !navList.current.contains(event.target)) {

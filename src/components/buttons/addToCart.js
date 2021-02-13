@@ -5,6 +5,9 @@ export default function AddToCart({product, text, svg, quantity=1}) {
   const [message, setMessage] = useState('')
   const [state, dispatch] = StateContext()
   
+  const cartID = () => {
+    return `_${Math.random().toString(36).substr(2,9)}`
+  }
 
   const addToCart = (id) => {
     if (id === product.id) {
@@ -14,6 +17,7 @@ export default function AddToCart({product, text, svg, quantity=1}) {
         payload: {
           ...product,
           price: product.price * quantity,
+          cartId: cartID(),
           quantity: quantity 
         }
       })
@@ -21,7 +25,6 @@ export default function AddToCart({product, text, svg, quantity=1}) {
     setTimeout(() => {
       setMessage('')
     }, 2000);
-    
   }
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import countryList from 'react-select-country-list' // NO working!
 
 export default function ShippingForm(params) {
   const [form, setForm] = useState({
@@ -10,14 +11,12 @@ export default function ShippingForm(params) {
     state: '',
     zipcode: ''
   })
-  const sampleKey = 'sand_E/LEM4ewQ5p3kO22mrFfraRP/G190y1L3gMXk+1tupk='
 
- 
 
   const handleForm = event => setForm({...form, [event.target.name]: event.target.value})
 
   console.log(form)
-  const {firstName, lastName, address,city,country,state,zipcode} = form
+  const {firstName, lastName, address,city, country, state, zipcode} = form
 
   
   return (

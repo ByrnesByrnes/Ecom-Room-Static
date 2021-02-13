@@ -1,0 +1,27 @@
+.favorite {
+  &__heart {
+    position: relative;
+    font-size: 25px;
+    z-index: 40;
+  }
+
+  &__fill,
+  &__outline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: inherit;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+  }
+
+  &__outline {
+    color: $crimson;
+  }
+
+  &__fill{
+    color: lightcoral;
+  }
+}
