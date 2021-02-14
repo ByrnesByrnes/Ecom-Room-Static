@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 // import countryList from 'react-select-country-list' // NO working!
 
-
-
+const { REACT_APP_SECRET_KEY } = process.env
+console.log(REACT_APP_SECRET_KEY)
 export default function ShippingForm({ results, setResults }) {
 
   const [form, setForm] = useState({
@@ -21,7 +21,7 @@ export default function ShippingForm({ results, setResults }) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer prod_jo7LSMBCWPTDefIUPwwoPy5bhYN8f/mA4zIohPGpwh0='
+      Authorization: `Bearer ${REACT_APP_SECRET_KEY}`
     },
     body: `{
         "origin_postal_code":"L5B2C9", 
