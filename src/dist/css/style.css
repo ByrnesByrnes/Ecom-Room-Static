@@ -1307,6 +1307,84 @@ a {
   color: lightcoral;
 }
 
+.shipping-form {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.shipping-form__input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.shipping-form__address {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shipping-form__button {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+  outline: none;
+  padding: 5px 40px;
+  gap: 0 20px;
+  border: none;
+  background-color: black;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  height: 50px;
+  height: 30px;
+}
+
+.shipping-form__button > svg {
+  font-size: 25px;
+}
+
+.shipping-form__button:hover {
+  background-color: crimson;
+}
+
+.shipping-rates {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.shipping-rates__rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.shipping-rates__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 20px;
+}
+
+.shipping-rates__left > input {
+  margin: 0;
+}
+
 .checkout {
   padding: 20px;
 }
@@ -1318,6 +1396,10 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .checkout__items {
@@ -1331,7 +1413,7 @@ a {
           justify-content: flex-end;
   padding: 20px;
   border: 1px solid #3b3b3b;
-  max-width: 450px;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -1350,5 +1432,17 @@ a {
           flex-direction: column;
   gap: 10px 0;
   padding: 20px 0;
+}
+
+@media (min-width: 800px) {
+  .checkout__items {
+    max-width: 450px;
+  }
+  .checkout__container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 /*# sourceMappingURL=style.css.map */

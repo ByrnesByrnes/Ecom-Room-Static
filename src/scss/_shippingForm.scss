@@ -1,0 +1,21 @@
+.shipping-form {
+  border: 2px solid $black;
+  padding: 10px;
+  border-radius: 10px;
+
+
+  &__input {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &__address {
+    display: flex;
+    
+  }
+
+  &__button {
+    @include button;
+    height: 30px;
+  }
+}

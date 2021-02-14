@@ -4,6 +4,15 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+  }
+
+  &__left {
+
+  }
+
+  &__right {
+
   }
 
   &__items {
@@ -12,7 +21,7 @@
     justify-content: flex-end;
     padding: 20px;
     border: 1px solid $darkGray;
-    max-width: 450px;
+    width: 100%;
     border-radius: 5px;
 
     & .cart-item__img {
@@ -26,6 +35,15 @@
     flex-direction: column;
     gap: 10px 0;
     padding: 20px 0;
+  }
+
+  @media (min-width: 800px) {
+    &__items {
+      max-width: 450px;
+    }
     
+    &__container {
+      flex-direction: row;
+    }
   }
 }

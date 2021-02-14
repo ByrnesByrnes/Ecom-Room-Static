@@ -1,0 +1,23 @@
+.shipping-rates {
+  border: 2px solid $black;
+  padding: 10px;
+  border-radius: 10px;
+
+  &__rate {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+
+    & > input {
+      margin: 0;
+    }
+  }
+
+  &__title {
+
+  }
+}

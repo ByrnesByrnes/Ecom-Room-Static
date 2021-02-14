@@ -17,18 +17,18 @@ export default function CartItem({ product, remove = true }) {
   return (
     <div className="cart-item">
       <div className="cart-item__left">
-      <Link to={`${ROUTES.BROWSE}/${product?.id}`}>
-        <img className="cart-item__image" src={product?.image} alt="" />
+      <Link to={`${ROUTES.BROWSE}/${product.id}`}>
+        <img className="cart-item__image" src={product.image} alt="" />
       </Link>
         <div className="cart-item__content">
-          <h4 className="cart-item__title">{product?.title}</h4>
+          <h4 className="cart-item__title">{product.title}</h4>
           <span className="cart-item__quantity">
             Quantity:
-            <span>{product?.quantity}</span>
+            <span>{product.quantity}</span>
           </span>
           {remove &&
             <button
-              onClick={() => removeFromCart(product?.id)}
+              onClick={() => removeFromCart(product.id)}
               className="cart-item__remove"
             >remove</button>
           }
@@ -36,7 +36,7 @@ export default function CartItem({ product, remove = true }) {
       </div>
 
       <div className="cart-item__right">
-        <p className="cart-item__price">${product?.price}</p>
+        <p className="cart-item__price">${product.price.toFixed(2)}</p>
       </div>
     </div>
   )
