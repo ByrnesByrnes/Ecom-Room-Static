@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import countryList from 'react-select-country-list' // NO working!
 
 const { REACT_APP_SECRET_KEY } = process.env
-console.log(REACT_APP_SECRET_KEY)
+
 export default function ShippingForm({ results, setResults }) {
 
   const [form, setForm] = useState({
@@ -39,7 +39,7 @@ export default function ShippingForm({ results, setResults }) {
               "length":20,
               "category":"mobiles",
               "declared_currency":"CAD",
-              "declared_customs_value":45
+              "declared_customs_value":40
             }
           ],
             "apply_shipping_rules":true,
