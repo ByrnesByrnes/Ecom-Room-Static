@@ -4,7 +4,8 @@ const localFavorites = localStorage.getItem('favorites')
 export const state = {
   cart: JSON.parse(localCart) || [],
   favorites: JSON.parse(localFavorites) || [],
-  wishList: []
+  wishList: [],
+  shippingAddress: {}
 }
 
 
@@ -54,6 +55,12 @@ export const reducer = (state, action) => {
       return state = {
         ...state,
         favorites: [...newFavorites]
+      }
+
+    case "SHIPPING_ADDRESS":
+      return state = {
+        ...state,
+        shippingAddress: {...action.payload}
       }
     default:
       return state

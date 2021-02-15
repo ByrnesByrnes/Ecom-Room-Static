@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 // import countryList from 'react-select-country-list' // NO working!
+import { StateContext } from '../../context/state'
+import { Loader } from '../../components'
 
 const { REACT_APP_SECRET_KEY } = process.env
 
-export default function ShippingForm({ results, setResults }) {
-
+export default function ShippingForm({ setResults }) {
+  const [_, dispatch] = StateContext()
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -14,7 +16,15 @@ export default function ShippingForm({ results, setResults }) {
     state: '',
     zipcode: ''
   })
-
+  const demo = {
+    firstName: 'John',
+    lastName: 'Doe',
+    address: '300 Borough Dr',
+    city: 'Scarborough',
+    country: 'CA',
+    state: 'ON',
+    zipcode: 'M1P 4P5'
+  }
   const handleForm = event => setForm({ ...form, [event.target.name]: event.target.value })
 
   const options = {
@@ -52,22 +62,29 @@ export default function ShippingForm({ results, setResults }) {
     try {
       const response = await fetch('https://api.easyship.com/rate/v1/rates', options)
       const data = await response.json()
-
-      setResults(data)
+      
+      if(response.status === 200) {
+        
+        setResults(data)
+      }
 
     } catch (error) {
       console.error(error)
     }
   }
 
-
   const handleSubmit = event => {
     event.preventDefault()
     getShippingRates()
+    dispatch({
+      type: "SHIPPING_ADDRESS",
+      payload: form
+    })
 
   }
-  console.log(form.state)
+
   const { firstName, lastName, address, city, country, state, zipcode } = form
+
   return (
     <form action="" className="shipping-form" onSubmit={handleSubmit}>
       <div className="shipping-form__input-box">
@@ -83,7 +100,7 @@ export default function ShippingForm({ results, setResults }) {
       </div>
 
       <div className="shipping-form__input-box">
-        <span className="shipping-form__lab">Last Name</span>
+        <span className="shipping-form__label">Last name</span>
         <input
           required
           value={lastName}
@@ -96,7 +113,7 @@ export default function ShippingForm({ results, setResults }) {
       <div className="shipping-form__address">
 
         <div className="shipping-form__input-box">
-          <span className="shipping-form__lab">Address</span>
+          <span className="shipping-form__label">Address</span>
           <input
             required
             value={address}
@@ -106,8 +123,10 @@ export default function ShippingForm({ results, setResults }) {
             type="text"
           />
         </div>
+
+
         <div className="shipping-form__input-box">
-          <span className="shipping-form__lab">City</span>
+          <span className="shipping-form__label">City</span>
           <input
             required
             value={city}
@@ -117,9 +136,27 @@ export default function ShippingForm({ results, setResults }) {
             type="text"
           />
         </div>
+
+
         <div className="shipping-form__input-box">
-          <span className="shipping-form__lab">Prov</span>
-          <select value={state} onChange={handleForm} name="state">
+          <span className="shipping-form__label">Country/Region</span>
+          <select 
+            className="shipping-form__input" 
+            value={country} 
+            onChange={handleForm} 
+            name="country"
+          >
+            <option value="" className=""></option>
+            <option value="CA" className="">Canada</option>
+            <option value="US" className="">United States</option>
+          </select>
+        </div>
+
+
+        <div className="shipping-form__input-box">
+          <span className="shipping-form__label">State/Prov</span>
+          <select className="shipping-form__input" value={state} onChange={handleForm} name="state">
+            <option value="" className=""></option>
             <option value="ON" className="">Ontario</option>
             <option value="Quebec" className="">Quebec</option>
             <option value="Manitoba" className="">Manitoba</option>
@@ -130,8 +167,10 @@ export default function ShippingForm({ results, setResults }) {
             <option value="New Brunswick" className="">New Brunswick</option> */}
           </select>
         </div>
+
+
         <div className="shipping-form__input-box">
-          <span className="shipping-form__lab">Zipcode</span>
+          <span className="shipping-form__label">Zipcode</span>
           <input
             required
             value={zipcode}
@@ -141,8 +180,19 @@ export default function ShippingForm({ results, setResults }) {
             type="text"
           />
         </div>
+
+
       </div>
-      <button className="shipping-form__button" type="submit">Get Rates</button>
+      <div className="shipping-form__buttons">
+        <button className="shipping-form__button" type="submit">Get Rates</button>
+        <div className="shipping-form__demo">
+          <button 
+            onClick={() => setForm(demo)}
+            className="shipping-form__button demo" 
+            type="button"
+          >Demo</button>
+        </div>
+      </div>
     </form>
   )
 };

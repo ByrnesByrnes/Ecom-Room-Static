@@ -1,5 +1,5 @@
 import './dist/css/style.css'
-import { StateContext, StateContextConsumer } from './context/state'
+import { StateContextConsumer } from './context/state'
 import {
   Home,
   Browse,
@@ -8,7 +8,7 @@ import {
   Cart,
   About,
   Contact,
- 
+  Payment
 } from './pages'
 import { Header, Footer } from './components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -25,6 +25,13 @@ export default function App() {
         )}
       </StateContextConsumer>
       <Switch>
+        <Route path={ROUTES.PAYMENT}>
+          <StateContextConsumer>
+          {([{cart, shippingAddress,}]) => (
+            <Payment cart={cart} shippingAddress={shippingAddress}/>
+          )}
+          </StateContextConsumer>
+        </Route>
         <Route path={ROUTES.CART}>
           <Cart />
         </Route>

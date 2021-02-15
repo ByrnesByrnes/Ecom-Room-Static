@@ -1,23 +1,49 @@
 .shipping-rates {
-  border: 2px solid $black;
-  padding: 10px;
+  border: 1px solid lightgray;
   border-radius: 10px;
 
+
   &__rate {
+    padding: 0 10px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
+
+  &__text {
+    color: $crimson;
+    font-weight: 500;
+  }
+
+  &__post {
+    padding: 10px;
+  }
+  
   &__left {
     display: flex;
     align-items: center;
-    gap: 0 20px;
+    
+    
 
     & > input {
-      margin: 0;
+      margin-right: 10px;
     }
   }
 
   &__title {
+    margin: 0;
+  }
+  &__price {
+    font-weight: 500;
 
+  }
+
+
+  @media(min-width: 500px) {
+    margin-right: 10px;
   }
 }

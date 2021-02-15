@@ -5,10 +5,13 @@
   padding: 20px 5px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid $darkGray;
+  border-bottom: 1px solid lightgray;
+
   &:last-child{
     border: none;
+    margin-bottom: 0;
   }
+
   &__left {
     display: flex;
     align-items: flex-start;
@@ -40,18 +43,17 @@
 
   &__image {
     margin: 0;
-    min-width: 125px;
+    min-width: 100px;
     width: 100%;
-    max-width: 200px;
-
+    max-width: 120px;
   }
 
   &__content{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   padding-left: 20px;
- 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 180px;
+    margin:0 10px;
   }
 
   &__remove {
@@ -59,7 +61,15 @@
     margin-right: 20px;
     width: fit-content;
   }
+
   @media (min-width: 800px) {
+
+    &__image {
+      
+    
+      max-width: 200px;
+    }
+
     &__right {
       position: static;
     }

@@ -47,7 +47,7 @@ export default function Cart({ config = { tension: 125, friction: 20, precision:
         </div>
 
         <div className="cart__buy-box">
-          Subtotal ${Subtotal(state.cart)}
+          Subtotal: ${Subtotal(state.cart)}
           <Link to={ROUTES.CHECKOUT} className="cart__checkout">Proceed to Checkout</Link>
         </div>
 

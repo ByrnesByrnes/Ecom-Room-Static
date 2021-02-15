@@ -13,12 +13,12 @@ export default function CartItem({ product, remove = true }) {
       payload: id
     })
   }
-
+  
   return (
     <div className="cart-item">
       <div className="cart-item__left">
       <Link to={`${ROUTES.BROWSE}/${product.id}`}>
-        <img className="cart-item__image" src={product.image} alt="" />
+        <img className="cart-item__image" src={product.image} alt={product.title} />
       </Link>
         <div className="cart-item__content">
           <h4 className="cart-item__title">{product.title}</h4>
