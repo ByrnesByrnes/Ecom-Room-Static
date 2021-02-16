@@ -62,14 +62,14 @@ export default function ShippingForm({ setResults }) {
     try {
       const response = await fetch('https://api.easyship.com/rate/v1/rates', options)
       const data = await response.json()
-      
+      console.log(data)
       if(response.status === 200) {
         
         setResults(data)
       }
 
     } catch (error) {
-      console.error(error)
+      console.log(error)
     }
   }
 

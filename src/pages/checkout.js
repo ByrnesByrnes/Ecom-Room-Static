@@ -13,10 +13,7 @@ export default function Checkout(params) {
   const [results, setResults] = useState({})
 
   const history = useHistory()
-
-
-
-
+  
   return (
     <section className="checkout">
       <div className="checkout__container">
@@ -31,7 +28,7 @@ export default function Checkout(params) {
 
           <div className="checkout__shipping-rates">
             <h3 className="checkout__subtitle">Shipping methods</h3>
-            <ShippingRates rates={results.rates} setSelectedRate={setSelectedRate} />
+            <ShippingRates rates={results.rates} message={results.messages} setSelectedRate={setSelectedRate} />
           </div>
         </div>
 

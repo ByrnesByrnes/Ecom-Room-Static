@@ -14,6 +14,7 @@ export default function CartItem({ product, remove = true }) {
     })
   }
   
+  
   return (
     <div className="cart-item">
       <div className="cart-item__left">
@@ -36,7 +37,7 @@ export default function CartItem({ product, remove = true }) {
       </div>
 
       <div className="cart-item__right">
-        <p className="cart-item__price">${product.price.toFixed(2)}</p>
+        <p className="cart-item__price">${(product.price * product.quantity).toFixed(2)}</p>
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ export default function Cart({ config = { tension: 125, friction: 20, precision:
 
   const items  = state.cart
 
- 
+  console.log(state.cart)
   const transitions = useTransition(items, item => item.cartId, {
     from: { transform: 'translate3d(0,-40px,0)' },
     enter: { transform: 'translate3d(0,0px,0)' },

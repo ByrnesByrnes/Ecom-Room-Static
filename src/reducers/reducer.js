@@ -8,7 +8,6 @@ export const state = {
   shippingAddress: {}
 }
 
-
 const setLocalStorage = (state, action = false, position = 'cart') => {
   localStorage.setItem(
     position,
@@ -22,13 +21,22 @@ export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item?.pri
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-
-      setLocalStorage(state.cart, action)
-
-      return state = {
-        ...state,
-        cart: [...state.cart, action.payload]
+      
+      const itemIndex = state.cart.findIndex(item => item.id === action.payload.id)
+      
+      if (itemIndex === -1) {
+        setLocalStorage(state.cart, action)
+        console.log(action.payload)
+        return state = {
+          ...state,
+          cart: [...state.cart, action.payload]
+        }
+      } else {
+        state.cart[itemIndex].quantity += parseInt(action.payload.quantity)
       }
+   
+      setLocalStorage(state.cart)
+      return state
     case "REMOVE_FROM_CART":
       const index = state.cart.findIndex(product => product.id === action.payload)
       const newCart = [...state.cart]
