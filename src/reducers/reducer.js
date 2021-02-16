@@ -15,7 +15,7 @@ const setLocalStorage = (state, action = false, position = 'cart') => {
   )
 }
 
-export const Subtotal = (cart) => cart.reduce((accum, item) => accum + item?.price, 0).toFixed(2)
+export const Subtotal = (cart) => cart.reduce((accum, item) => accum + (item?.price * item?.quantity), 0).toFixed(2)
 
 
 export const reducer = (state, action) => {
