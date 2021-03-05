@@ -19,9 +19,15 @@
 
   &__outline {
     color: $crimson;
+    &:hover {
+      & ~ svg {
+        opacity: 1 !important;
+      }
+    }
   }
-
+  
   &__fill{
     color: lightcoral;
+    z-index: -1;
   }
 }

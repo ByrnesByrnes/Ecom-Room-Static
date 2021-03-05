@@ -73,6 +73,10 @@ a {
   color: $black;
   font-weight: 600;
   text-decoration: none;
+
+  &.active {
+    // add active state for use Profile and cart
+  }
 }
 
 .move-to-cart {

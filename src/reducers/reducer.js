@@ -26,7 +26,6 @@ export const reducer = (state, action) => {
       
       if (itemIndex === -1) {
         setLocalStorage(state.cart, action)
-        console.log(action.payload)
         return state = {
           ...state,
           cart: [...state.cart, action.payload]
@@ -40,7 +39,6 @@ export const reducer = (state, action) => {
     case "REMOVE_FROM_CART":
       const index = state.cart.findIndex(product => product.id === action.payload)
       const newCart = [...state.cart]
-
       index >= 0 ? newCart.splice(index, 1) : console.error('Product does not exist.')
 
       setLocalStorage(newCart)
@@ -71,6 +69,6 @@ export const reducer = (state, action) => {
         shippingAddress: {...action.payload}
       }
     default:
-      return state
+      return state = {...state}
   }
 }

@@ -19,39 +19,64 @@
     margin: 0 auto;
   }
 
-  &__side {
+  &__side-left,
+  &__side-right {
     display: flex;
     align-items: center;
+  }
 
-    &__right {
+  &__side-right {
+    & svg {
       position: relative;
-      height: fit-content;
+      font-size: 2rem;
+      color: $white;
+      transition: .4s ease-in-out;
+      cursor: pointer;
 
-      > svg {
-        position: relative;
-        font-size: 2rem;
-        color: $white;
-        transition: .4s ease-in-out;
-        cursor: pointer;
-  
-        &:hover {
-          color: crimson !important;
-        }
+      &:hover {
+        color: crimson !important;
+      }
     }
 
     &.open {
-        position: relative;
-        z-index: 50;
+      position: relative;
+      z-index: 50;
 
-        > svg {
-          color: $black;
-          fill: $white;
-        }
-      
+      & svg {
+        color: black;
+        
+      }
     }
   }
-    }
 
+  &__user {
+    position: relative;
+  }
+
+  &__dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: -100px;
+    left: -100px;
+    background: lightgrey;
+    height: fit-content;
+    padding: 20px;
+    visibility: hidden;
+    transition: .4s ease-in-out;
+    opacity: 0;
+    transform-origin: top;
+
+    border: 1px solid lightcoral;
+    &.open {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__cart {
+    position: relative;
+  }
 
   &__cart__count {
     position: absolute;
@@ -60,20 +85,20 @@
     justify-content: center;
     color: $crimson;
     z-index: 30;
-    right: -10px;
     height: 25px;
     width: 25px;
     background-color: $white;
-    bottom: 0;
+    top: 45%;
+    transform: translateX(10px);
     border-radius: 50px;
     border: 2px solid;
     border-color: $crimson;
     transition: .4s ease-in-out;
-    
-    > span {
-      transform: translateY(2px);
+
+    & span {
+      align-self: flex-end;
     }
-  } 
+  }
 
   &__logo {
     color: $white;

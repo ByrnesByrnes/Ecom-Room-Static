@@ -8,7 +8,8 @@ import {
   Cart,
   About,
   Contact,
-  Payment
+  Payment,
+  Favorites,
 } from './pages'
 import { Header, Footer } from './components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -31,6 +32,9 @@ export default function App() {
             <Payment cart={cart} shippingAddress={shippingAddress}/>
           )}
           </StateContextConsumer>
+        </Route>
+        <Route path={ROUTES.FAVORITES}>
+          <Favorites />
         </Route>
         <Route path={ROUTES.CART}>
           <Cart />

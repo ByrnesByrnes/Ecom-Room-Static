@@ -1,4 +1,4 @@
-import Reac, { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { StateContext } from '../context/state'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
@@ -23,11 +23,11 @@ export default function Favorite({ product, fontSize = "25px" }) {
       className="favorite__heart"
       style={{ fontSize: fontSize }}
     >
+      <AiOutlineHeart className="favorite__outline" />
       <AiFillHeart
         className="favorite__fill"
         style={{ opacity: isFavorited ? '1' : '0' }}
       />
-      <AiOutlineHeart className="favorite__outline" />
     </div>
 
   )

@@ -3,13 +3,15 @@ import React, {useState, useEffect } from 'react';
 export function GetData(queries) {
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(true)
-
+  const [error, setError] = useState('')
   const baseUrl = 'https://fakestoreapi.com/products'
 
   const url = queries ? `${baseUrl}/${queries}` : baseUrl
   
   useEffect(() => {
-    async function getData() {
+    let isCancelled = false
+
+    const getData = async () => {
 
       try {
         setLoading(true)
@@ -18,15 +20,20 @@ export function GetData(queries) {
         if(response.status === 200) {
           setLoading(false)
           setResults(data)
+          
         }
       } catch (error) {
-        console.error(error)
+        console.log(error)
+        setError(error)
       }
     }
   
     getData()
-    
-  }, [])
 
-  return [results , loading ]
+    return () => {
+      isCancelled = true
+    }
+  }, [url])
+
+  return [results , loading, error]
 };

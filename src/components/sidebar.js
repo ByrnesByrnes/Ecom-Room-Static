@@ -7,12 +7,13 @@ export default function SideBar({ products, selection, setSelection }) {
 
   
   useEffect(() => {
+    let isCurrent = false
     const category = [...new Set(products.map(products => products.category))]
 
    
     setCategories(category)
    
-  // return () => category
+    return () => isCurrent = true
   }, [products])
 
   
