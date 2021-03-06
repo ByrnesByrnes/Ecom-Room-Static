@@ -1,0 +1,54 @@
+.about {
+  position: relative;
+  margin-top: 120px; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  &__image {
+    position: absolute;
+    top: 22%;
+    right: -20%;
+    max-width: 800px;
+    transform: translateY(-50%) scaleX(-1);
+    z-index: -1;
+    filter: brightness(.8);
+  }
+  &__title,
+  &__text {
+    color: $white !important;
+
+  }
+  &__text {
+   
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &__content {
+    padding: 0 10px;
+    background:linear-gradient(180deg, rgba(0,0,0, 0.7) 80%, rgba(0,0,0,0));
+    width: 100%;
+    transition: .4s ease-in-out;
+  }
+
+
+  &__button {
+    @include button;
+  }
+  @media (min-width: 800px) {
+
+    &__title,
+    &__text {
+      color: $black !important;
+    }
+
+    &__content {
+      background: transparent;
+      width: 50%;
+      color: $white !important;
+    }
+  }
+}

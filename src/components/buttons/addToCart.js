@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StateContext } from '../../context/state'
 
-export default function AddToCart({product, text, svg, quantity=1, modal, setModal, count, setCount}) {
+export default function AddToCart({product, text, svg, quantity=1, modal, setModal, count, setCount={}}) {
 
   const [message, setMessage] = useState('')
   const [state, dispatch] = StateContext()
@@ -16,7 +16,7 @@ export default function AddToCart({product, text, svg, quantity=1, modal, setMod
     if (id === product.id) {
       
       if(setModal) {
-        
+      
         setCount({
           position: count.position + 1,
           zIndex: count.zIndex + 5
@@ -52,13 +52,14 @@ export default function AddToCart({product, text, svg, quantity=1, modal, setMod
       setMessage('')
     }, 2000);
     
-  
-    setTimeout(() => {
-      setCount({
-        position: 0,
-        zIndex: 0,
-      })
-    }, 2000)
+    if(count) {
+      setTimeout(() => {
+        setCount({
+          position: 0,
+          zIndex: 0,
+        })
+      }, 2000)
+    }
     
   }
 
