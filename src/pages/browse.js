@@ -5,7 +5,12 @@ import { StateContext} from '../context/state'
 
 export default function Browse() {
   const [selection, setSelection] = useState('')
-
+  const [counts,setCounts] = useState({
+    position: 0,
+    zIndex: 0
+  })
+  
+  console.log(counts)
   const [products, loading] = GetData()
 
   const productsFiltered = products.filter(product => product.category === selection)
@@ -23,7 +28,12 @@ export default function Browse() {
 
         <div className="browse__content">
           {results.map(product => (
-            <Card key={product.id} product={product} />
+            <Card 
+              key={product.id} 
+              product={product}
+              count={counts}
+              setCount={setCounts}
+            />
           ))}
         </div>
     

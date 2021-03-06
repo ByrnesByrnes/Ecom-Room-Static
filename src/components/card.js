@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
-import { AddToCart, Favorite } from '../components'
-
-export default function Card({ product }) {
+import { AddToCart, Favorite, Modal } from '../components'
 
 
+
+export default function Card({ product, count, setCount }) {
+  
+  const [modal, setModal] = useState({
+    display: false,
+    position: 0,
+    zIndex: 0,
+  })
+  
+  if(modal.display) console.log(modal)
 
   return (
     <div className="card">
@@ -19,12 +27,20 @@ export default function Card({ product }) {
         <h3 className="card__title">{product.title}</h3>
       </Link>
 
-
       {/* <p className="card__text">{product.description}</p> */}
+
       <div className="card__info">
         <p className="card__price">${product.price.toFixed(2)}</p>
-        <AddToCart product={product} text={"Quick Add"} />
+        <AddToCart 
+          product={product} 
+          text={"Quick Add"}
+          modal={modal}
+          setModal={setModal}
+          count={count}
+          setCount={setCount}
+        />
       </div>
+      <Modal product={product} modal={modal}/>
     </div>
   )
 }

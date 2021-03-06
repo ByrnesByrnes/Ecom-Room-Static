@@ -1,0 +1,28 @@
+.modal {
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+  top: 80px;
+  right: 10px;
+  transform-origin: right;
+  z-index: 100;
+  
+  border: 1px solid blue;
+  width: 300px;
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  transition: .4s ease-in-out;
+  overflow: hidden;
+  height: 200px;
+  display:flex;
+  align-items: center;
+  
+  &.open {
+    visibility: visible;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+ 
+}
