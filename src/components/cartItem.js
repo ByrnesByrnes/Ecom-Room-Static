@@ -2,15 +2,11 @@ import React, { useRef } from 'react';
 import { StateContext } from '../context/state'
 import {Link} from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
-
+import { EditQuantity } from '../components'
 
 export default function CartItem({ product, remove = true}) {
   const [state, dispatch] = StateContext()
 
-  const domNode = useRef(()=> {
-    const foundMe = state.cart.find(item => item.id === product.id)
-    console.log(foundMe)
-  })
 
   const removeFromCart = id => {
     dispatch({
@@ -19,12 +15,8 @@ export default function CartItem({ product, remove = true}) {
     })
   }
 
- 
-  // const foundMe = state.cart.find(item => item.id === product.id)
-  // console.log(foundMe, 'found')
-
   return (
-    <div ref={domNode} className="cart-item">
+    <div className="cart-item">
       <div className="cart-item__left">
       <Link to={`${ROUTES.BROWSE}/${product.id}`}>
         <img className="cart-item__image" src={product.image} alt={product.title} />
@@ -33,8 +25,8 @@ export default function CartItem({ product, remove = true}) {
           <h4 className="cart-item__title">{product.title}</h4>
           <span className="cart-item__quantity">
             Quantity:
-            <span>{product.quantity || 1}</span>{/* make dynamic */}
-
+            {/*<span>{product.quantity || 1}</span> make dynamic */}
+            <span><EditQuantity product={product} /></span>
           </span>
           {remove &&
             <button

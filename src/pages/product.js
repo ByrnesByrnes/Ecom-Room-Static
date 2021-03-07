@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
 import { FaPinterestP, FaFacebookF, FaTwitter, FaGooglePlusG } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-import { Loader, AddToCart, Favorite } from '../components'
+import { Loader, AddToCart, Favorite, EditQuantity } from '../components'
 import { StateContext } from '../context/state'
 import { GetData } from '../api/getData'
 import * as ROUTES from '../constants/routes'
@@ -15,10 +15,6 @@ export default function Product() {
   const { id } = useParams()
 
   const [product, loading] = GetData(id)
-
-  const handleProductChange = (id) => {
-    GetData(product.id)
-  }
 
   return loading ? <Loader /> : (
     <section className="product">
@@ -34,11 +30,11 @@ export default function Product() {
         <div>Quantity:
           <input
             className="product__quantity"
-            value={quantity}
+            value={quantity < 1 ? 1 : quantity}
             onChange={(event) => setQuantity(event.target.value)}
             type="number"
           />
-
+        
         </div>
         <AddToCart
           product={product}

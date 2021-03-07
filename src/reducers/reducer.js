@@ -21,7 +21,6 @@ export const Subtotal = (cart) => cart.reduce((accum, item) => accum + (item?.pr
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      
       const itemIndex = state.cart.findIndex(item => item.id === action.payload.id)
       
       if (itemIndex === -1) {
@@ -67,6 +66,15 @@ export const reducer = (state, action) => {
       return state = {
         ...state,
         shippingAddress: {...action.payload}
+      }
+    case "EDIT_QUANTITY":
+      const newIndex = state.cart.findIndex(item => item.id === action.payload.id)
+
+      state.cart[newIndex].quantity = parseInt(action.payload.quantity)
+      setLocalStorage(state.cart)
+      return {
+        ...state,
+        cart: [...state.cart]
       }
     default:
       return state = {...state}

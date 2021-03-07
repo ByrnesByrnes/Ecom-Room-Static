@@ -267,7 +267,7 @@ a {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  padding: 20px;
+  padding: 20px 0;
   visibility: hidden;
   -webkit-transition: .4s ease-in-out;
   transition: .4s ease-in-out;
@@ -279,7 +279,6 @@ a {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  width: 250px;
 }
 
 .header__dropdown > * {
@@ -289,6 +288,11 @@ a {
 .header__dropdown.open {
   visibility: visible;
   opacity: 1;
+}
+
+.header__dropdown > a:hover {
+  background-color: crimson;
+  width: 100%;
 }
 
 .header__cart {
