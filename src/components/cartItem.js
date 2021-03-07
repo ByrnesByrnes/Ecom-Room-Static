@@ -4,9 +4,8 @@ import {Link} from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 import { EditQuantity } from '../components'
 
-export default function CartItem({ product, remove = true}) {
+export default function CartItem({ product, remove = true, quanPrice={}}) {
   const [state, dispatch] = StateContext()
-
 
   const removeFromCart = id => {
     dispatch({
@@ -14,7 +13,7 @@ export default function CartItem({ product, remove = true}) {
       payload: id,     
     })
   }
-
+  
   return (
     <div className="cart-item">
       <div className="cart-item__left">
@@ -38,7 +37,7 @@ export default function CartItem({ product, remove = true}) {
       </div>
 
       <div className="cart-item__right">
-        <p className="cart-item__price">${(product.price * product.quantity).toFixed(2)}</p>
+        <p className="cart-item__price">${((quanPrice.price || product.price) * (quanPrice.quantity || product.quantity)).toFixed(2)}</p>
       </div>
     </div>
   )

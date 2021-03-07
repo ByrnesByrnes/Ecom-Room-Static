@@ -10,7 +10,6 @@ export default function Browse() {
     zIndex: 0
   })
   
-  console.log(counts)
   const [products, loading] = GetData()
 
   const productsFiltered = products.filter(product => product.category === selection)

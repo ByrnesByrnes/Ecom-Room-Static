@@ -3,7 +3,7 @@ import React from 'react';
 export default function Payment({cart, shippingAddress}) {
 
   const shipTo = shippingAddress
-
+  console.log(cart)
   return (
     <section className="payment">
       <div className="payment__container">

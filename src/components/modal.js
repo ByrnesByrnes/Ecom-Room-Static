@@ -1,9 +1,11 @@
-import React, {useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { CartItem } from '../components'
-
+import {StateContext} from '../context/state'
 
 export default function Modal({product, modal}) {
+  const [state, dispatch] = StateContext()
 
+  const index = state.cart.find(item => (item.id) === product.id)
 
   return (
     <div 
@@ -12,7 +14,7 @@ export default function Modal({product, modal}) {
           zIndex: `${100 + modal.zIndex}`
       }}
       className={`modal ${modal.display ? 'open': '' }`}>
-      <CartItem product={product} remove={false} />
+      <CartItem product={product} remove={false} quanPrice={index}/>
     </div>
   )
 }

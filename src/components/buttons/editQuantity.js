@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StateContext} from '../../context/state'
 
 
 export default function EditQuantity({product}) {
   const [state, dispatch] = StateContext()
 
-  console.log(state.cart, 'EditQuantity Tab')
   return (
       <input
         style={{

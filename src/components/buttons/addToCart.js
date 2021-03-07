@@ -2,21 +2,16 @@ import React, { useState } from 'react';
 import { StateContext } from '../../context/state'
 
 export default function AddToCart({product, text, svg, quantity=1, modal, setModal, count, setCount={}}) {
-
   const [message, setMessage] = useState('')
   const [state, dispatch] = StateContext()
-
 
   const cartId = () => {
     return `_${Math.random().toString(36).substr(2,9)}`
   }
   
   const addToCart = (id) => {
- 
     if (id === product.id) {
-      
       if(setModal) {
-      
         setCount({
           position: count.position + 1,
           zIndex: count.zIndex + 5
@@ -41,8 +36,9 @@ export default function AddToCart({product, text, svg, quantity=1, modal, setMod
         type: "ADD_TO_CART",
         payload: {
           ...product,
-          price: product.price,
           cartId: cartId(),
+          created: Date.now(),
+          price: product.price,
           quantity: quantity, 
         }
       })
