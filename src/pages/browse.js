@@ -10,7 +10,7 @@ export default function Browse() {
     zIndex: 0
   })
   
-  const [products, loading] = GetData()
+  const [products, loading, error] = GetData()
 
   const productsFiltered = products.filter(product => product.category === selection)
 
@@ -18,7 +18,6 @@ export default function Browse() {
 
   return loading ? <Loader /> : (
     <section className="browse">
-  
         <SideBar
           products={products}
           selection={selection}
