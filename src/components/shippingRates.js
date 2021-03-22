@@ -1,7 +1,10 @@
 import React from 'react';
+import {StateContext} from '../context/state'
 
 export default function ShippingRates({ rates, setSelectedRate, message }) {
-  
+  const [state, dispatch] = StateContext()
+
+
   return (
     <div className="shipping-rates">
       {message && <div className="shipping-rates__post">{message[0]}</div> }
@@ -15,7 +18,13 @@ export default function ShippingRates({ rates, setSelectedRate, message }) {
           <div className="shipping-rates__left">
             <input
               type="radio" name="shipping-rate" value={rate.shipment_charge_total.toFixed(2)}
-              onClick={() => setSelectedRate(rate.shipment_charge_total)}
+              onClick={() => {
+                setSelectedRate(rate.shipment_charge_total)
+                dispatch({
+                  type: 'SHIPPING_RATE',
+                  payload: rate.shipment_charge_total
+                })
+              }}
             />
             <div>
               <h4 className="shipping-rates__title">{rate.courier_name}</h4>

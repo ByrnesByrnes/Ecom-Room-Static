@@ -52,7 +52,9 @@ export default function Header({ cart }) {
               {/* Style Drop down menu */}
               <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>favorites</Link>
               <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>Profile</Link>
-              <Link onClick={() => setDropdown(false)}className="" to={ROUTES.FAVORITES}>WishList</Link>
+              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>WishList</Link>
+              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.ORDERS}>Your Orders</Link>
+            
             </div>    
           </div>
           

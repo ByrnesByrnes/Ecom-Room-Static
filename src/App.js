@@ -10,6 +10,7 @@ import {
   Contact,
   Payment,
   Favorites,
+  Orders,
 } from './pages'
 import { Header, Footer } from './components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -28,9 +29,13 @@ export default function App() {
       <Switch>
         <Route path={ROUTES.PAYMENT}>
           <StateContextConsumer>
-          {([{cart, shippingAddress,}]) => (
-            <Payment cart={cart} shippingAddress={shippingAddress}/>
-          )}
+            {([{ cart, shippingAddress, shippingRate }]) => (
+              <Payment
+                cart={cart}
+                shippingAddress={shippingAddress}
+                shippingRate={shippingRate}
+              />
+            )}
           </StateContextConsumer>
         </Route>
         <Route path={ROUTES.FAVORITES}>
@@ -38,6 +43,11 @@ export default function App() {
         </Route>
         <Route path={ROUTES.CART}>
           <Cart />
+        </Route>
+        <Route path={ROUTES.ORDERS}>
+          <StateContextConsumer>
+            {([{ orders }]) => <Orders orders={orders}/>}
+        </StateContextConsumer>
         </Route>
         <Route path={ROUTES.ABOUT}>
           <About />

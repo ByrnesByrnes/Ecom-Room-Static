@@ -6,7 +6,7 @@ import * as ROUTES from '../constants/routes'
 import { Link, useHistory } from 'react-router-dom'
 
 
-export default function Checkout(params) {
+export default function Checkout() {
   const [selectedRate, setSelectedRate] = useState('')
   const [toggle, setToggle] = useState('')
   const [state, dispatch] = StateContext()

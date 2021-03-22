@@ -124,7 +124,6 @@ export default function ShippingForm({ setResults }) {
           />
         </div>
 
-
         <div className="shipping-form__input-box">
           <span className="shipping-form__label">City</span>
           <input

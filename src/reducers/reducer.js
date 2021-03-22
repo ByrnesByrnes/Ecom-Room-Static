@@ -5,7 +5,8 @@ export const state = {
   cart: JSON.parse(localCart) || [],
   favorites: JSON.parse(localFavorites) || [],
   wishList: [],
-  shippingAddress: {}
+  shippingAddress: {},
+  orders: []
 }
 
 const setLocalStorage = (state, action = false, position = 'cart') => {
@@ -66,6 +67,18 @@ export const reducer = (state, action) => {
       return state = {
         ...state,
         shippingAddress: {...action.payload}
+      }
+    case "SHIPPING_RATE":
+      console.log('workig', action.payload)
+      return state = {
+        ...state,
+        shippingRate: action.payload
+      }
+    case "ADD_TO_ORDERS":
+      console.log('Orders',action.payload)
+      return state = {
+        ...state,
+        orders: [...state.orders, action.payload]
       }
     case "EDIT_QUANTITY":
       const newIndex = state.cart.findIndex(item => item.id === action.payload.id)

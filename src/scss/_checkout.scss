@@ -1,10 +1,6 @@
 .checkout {
-  padding: 20px;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-
-
+  @include layout;
+  
   &__container {
     display: flex;
     justify-content: space-between;

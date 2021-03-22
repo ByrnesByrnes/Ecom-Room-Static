@@ -1,86 +1,132 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
+import { Subtotal } from '../reducers/reducer'
+import { StateContext } from '../context/state'
+import Cards from 'react-credit-cards'
+import 'react-credit-cards/es/styles-compiled.css'
+import * as ROUTES from '../constants/routes'
 
-export default function Payment({cart, shippingAddress}) {
+export default function Payment({ cart, shippingAddress, shippingRate }) {
+  const [confirm, setConfirm] = useState('')
+  const [_, dispatch] = StateContext()
+  const [creditCard, setCreditCard] = useState({
+    cvc: '',
+    expiry: '',
+    name: '',
+    number: '',
+    focus: '',
+  })
 
-  const shipTo = shippingAddress
-  
-  console.log(cart)
+  console.log(cart, shippingAddress)
+
+  const handlePayment = () => {
+
+    dispatch({
+      type: "ADD_TO_ORDERS",
+      payload: {
+        orderId: 234,
+        date: Date.now(),
+        cart: cart,
+      }
+    })
+
+    setCreditCard({
+      cvc: '',
+      expiry: '',
+      name: '',
+      number: ''
+    })
+    setConfirm('Thank You for Your Order!')
+  }
+
+  const handleFocus = event => {
+    setCreditCard({ ...creditCard, focus: event.target.name })
+  }
+
+  const handleChange = event => {
+    const { name, value } = event.target
+    setCreditCard({ ...creditCard, [name]: value })
+  }
+
+  const { firstName, lastName, address, city, country, state, zipcode } = shippingAddress
+  const { cvc, expiry, name, number, focus } = creditCard
+
   return (
     <section className="payment">
       <div className="payment__container">
 
-
         <div className="payment__left">
-        <div className="payment__head">
-          <h1 className="payment__title">Payment</h1>
-          <h3>Review Your Order</h3>
-        </div>
-        </div>
-        <div className="payment__right"></div>
-      </div>
+          <div className="payment__head">
+            <h1 className="payment__title">Payment</h1>
+          </div>
 
+          <div className="payment__card">
+            <div id="paymentForm">
+              <Cards
+                cvc={cvc}
+                expiry={expiry}
+                name={name}
+                number={number}
+                focused={focus}
+              />
+              <div className="payment__card-info">
+                <input
+                  type="tel"
+                  name="number"
+                  value={number}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  placeholder="Card Number"
+                />
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  placeholder="Full Name"
+                />
+                <div>
+                  <input
+                    type="tel"
+                    name="expiry"
+                    value={expiry}
+                    onFocus={handleFocus}
+                    onChange={handleChange}
+                    placeholder="Expiry"
+                  />
+                  <input
+                    type="tel"
+                    name="cvc"
+                    value={cvc}
+                    onChange={handleChange}
+                    placeholder="CVC"
+                    onFocus={handleFocus}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="payment__billing-address">
+            <p className="payment__text">{firstName} {lastName}</p>
+            <p className="payment__text">{address}</p>
+            <p className="payment__text">{city}, {state}, {zipcode}</p>
+            {/* <p className="payment__text">number maybe</p> */}
+          </div>
+          <button onClick={handlePayment}>Pay Now</button>
+        </div>
+        <div className="payment__right">
+          <h3 className="payment__subtitle">Order Summary <span></span></h3>
+          <p className="payment__text">Product Subtotal ${Subtotal(cart)}</p>
+          <p className="payment__text">Estimated Shipping ${shippingRate}</p>
+          <p className="payment__text">Estimated Taxes ${(Subtotal(cart) * 0.13).toFixed(2)}</p>
+          <p className="payment__text">Estimated Total {(Subtotal(cart) * 1.13 + shippingRate).toFixed(2)}</p>
+        </div>
+      </div>
+      {confirm ? <h4>{confirm} <Link to={ROUTES.ORDERS}>View Your Orders</Link></h4> : ''}
     </section>
   )
 }
-/*
-    <section className="checkout">
-      <div className="checkout__container">
-
-        <div className="checkout__left">
-          <div className="checkout__head">
-            <h1 className="checkout__title">Checkout</h1>
-            <h3>Getting your Order</h3>
-          </div>
-          <h3 className="checkout__subtitle">Shipping Information</h3>
-          <ShippingForm setResults={setResults} setSelectedRate={setSelectedRate} />
-
-          <div className="checkout__shipping-rates">
-            <h3 className="checkout__subtitle">Shipping methods</h3>
-            <ShippingRates rates={results.rates} setSelectedRate={setSelectedRate} />
-          </div>
-        </div>
-
-        <div className="checkout__right">
-          <h3 className="checkout__subtitle">Order Summary</h3>
-          <div className="checkout__items">
-            {state.cart.map((product, i) => (
-              <CartItem key={i} product={product} remove={false} />
-            ))}
-         
-            </div>
-            </div>
-          </div>
-          <h3>Continue to Payment</h3>
-          <div className="checkout__confirm">
-            <div className="checkout__info">
-              <p>Confirm everything is correct and proceed to payment.</p>
-            </div>
-            <div className="checkout__totals">
-              <span>
-                <span className="checkout__label">Subtotal:</span>
-                ${Subtotal(state.cart)}
-              </span>
-              <span>
-                <span className="checkout__label">Shipping:</span>
-                {selectedRate ? `$${selectedRate.toFixed(2)}` : "Calculating"}
-              </span>
-              <span>
-                <span className="checkout__label">Taxes:</span>
-               ${(Subtotal(state.cart) * 0.13).toFixed(2)}
-              </span>
-              <span>
-                <span className="checkout__label">Total:</span>
-              ${(Subtotal(state.cart) * 1.13 + (selectedRate ? selectedRate : 0)).toFixed(2)}
-              </span>
-            </div>
-          </div>
-          <div className="checkout__nav">
-            <button onClick={() => history.push(ROUTES.CART)}>Back to cart</button>
-            <Link to={ROUTES.PAYMENT} className="checkout__continue">Continue</Link>
-          </div>
-        </section>
-
-*/
 // shipping information COnfirm
 // Products to Confirm
 // add credit card infor for payment
