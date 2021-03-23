@@ -16,12 +16,12 @@ export default function Product() {
   const { id } = useParams()
 
   const [product, loading] = GetData(id)
-
+  console.log(product.image)
   return loading ? <Loader /> : (
     <section className="product">
       <div className="product__images">
         <span className="product__favorited"><Favorite product={product} /></span>
-        <img src={fixImageUrl(product.image)} alt={product.title} />
+        <img src={product.image && fixImageUrl(product.image)} alt={product.title} />
       </div>
 
       <div className="product__content">
