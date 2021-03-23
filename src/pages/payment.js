@@ -17,8 +17,6 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
     focus: '',
   })
 
-  console.log(cart, shippingAddress)
-
   const handlePayment = () => {
 
     dispatch({
@@ -53,16 +51,17 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
 
   return (
     <section className="payment">
+      <div className="payment__head">
+        <h1 className="payment__title">Payment</h1>
+      </div>
       <div className="payment__container">
 
         <div className="payment__left">
-          <div className="payment__head">
-            <h1 className="payment__title">Payment</h1>
-          </div>
 
-          <div className="payment__card">
-            <div id="paymentForm">
+          <div>
+            <div id="paymentForm" className="payment__card">
               <Cards
+                
                 cvc={cvc}
                 expiry={expiry}
                 name={name}
@@ -108,22 +107,25 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
             </div>
           </div>
           <div className="payment__billing-address">
+
+            <h3 className="payment__subtitle">Shipping/Billing Address</h3>
             <p className="payment__text">{firstName} {lastName}</p>
-            <p className="payment__text">{address}</p>
+            <p className="payment__text">{address}, {country}</p>
             <p className="payment__text">{city}, {state}, {zipcode}</p>
             {/* <p className="payment__text">number maybe</p> */}
           </div>
-          <button onClick={handlePayment}>Pay Now</button>
+      {confirm ? <h4>{confirm}<Link to={ROUTES.ORDERS}> View Orders</Link></h4> : 'Please verify everything is correct before paying.'}
+          
+          <button className="payment__button" onClick={handlePayment}>Pay Now</button>
         </div>
         <div className="payment__right">
           <h3 className="payment__subtitle">Order Summary <span></span></h3>
-          <p className="payment__text">Product Subtotal ${Subtotal(cart)}</p>
-          <p className="payment__text">Estimated Shipping ${shippingRate}</p>
-          <p className="payment__text">Estimated Taxes ${(Subtotal(cart) * 0.13).toFixed(2)}</p>
-          <p className="payment__text">Estimated Total {(Subtotal(cart) * 1.13 + shippingRate).toFixed(2)}</p>
+          <p className="payment__text">Product Subtotal:<span>${Subtotal(cart)}</span></p>
+          <p className="payment__text">Estimated Shipping:<span>${shippingRate}</span></p>
+          <p className="payment__text">Estimated Taxes:<span>${(Subtotal(cart) * 0.13).toFixed(2)}</span></p>
+          <p className="payment__text">Estimated Total:<span>${(Subtotal(cart) * 1.13 + shippingRate).toFixed(2)}</span></p>
         </div>
       </div>
-      {confirm ? <h4>{confirm} <Link to={ROUTES.ORDERS}>View Your Orders</Link></h4> : ''}
     </section>
   )
 }

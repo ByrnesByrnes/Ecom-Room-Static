@@ -3,17 +3,76 @@
 
   &__container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
-
+  &__left {
+    order: 2;
+  }
   &__right {
+    border-radius: 10px;
+    border: 1px solid ;
+    padding: 0 20px;
+    height: fit-content;
+    min-width: 325px;
+    max-width: 400px;
+    order: 1;
+    margin-bottom: 20px;
 
+    > .payment__text:last-child {
+      border-top: 1px solid lightgray;
+      padding-top: 15px;
+    }
   }
-  &__card {
-    display: flex;
-  }
+
   &__card-info {
     display: flex;
     flex-direction: column;
+    margin: 10px 0;
+    > * {
+      margin: 5px;
+      height: 35px;
+      border: none;
+      outline: none;
+    }
+
+    > div > input {
+      height: inherit;
+      border: inherit;
+      outline: inherit;
+      width: 50%;
+    }
+  }
+
+  &__text{
+    display: flex;
+    justify-content: space-between;
+    
+    > span {
+      font-weight: 600;
+    }
+  }
+  &__button {
+    @include button;
+  }
+
+
+  @media (min-width: 800px) {
+    &__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__left {
+      order: 1;
+    }
+    &__right {
+      order: 2;
+    }
+    &__card {
+      display: flex;
+      align-items: center;
+      gap: 0 20px;
+    }
   }
 }
