@@ -17,8 +17,9 @@
     min-width: 325px;
     max-width: 400px;
     order: 1;
+    margin: 0 auto;
     margin-bottom: 20px;
-
+   
     > .payment__text:last-child {
       border-top: 1px solid lightgray;
       padding-top: 15px;
@@ -60,6 +61,15 @@
     @include button;
   }
 
+  &__billing-address {
+
+    :nth-child(2) {
+      padding-top: 10px;
+      border-top: 2px solid lightgrey;
+      width: 100%;
+      max-width: 500px;
+    }
+  }
 
   @media (min-width: 800px) {
     &__container {

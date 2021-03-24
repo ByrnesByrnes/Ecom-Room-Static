@@ -8,14 +8,14 @@ import {fixImageUrl} from '../utils/fixImageUrl'
 
 export default function CartItem({ product, remove = true, quanPrice={}}) {
   const [state, dispatch] = StateContext()
-
+  
   const removeFromCart = id => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: id,     
     })
   }
-
+  
   return (
     <div className="cart-item">
       <div className="cart-item__left">

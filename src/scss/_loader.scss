@@ -4,11 +4,13 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  
+
   &:before {
     content: "";
-    height: 50px;
-    width: 50px;
+    height: 100%;
+    width: 100%;
+    max-height: 50px;
+    max-width: 50px;
     border: 6px solid $black;
     border-color: $black transparent;
     border-radius: 50%;

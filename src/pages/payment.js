@@ -45,7 +45,7 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
     setCreditCard({ ...creditCard, [name]: value })
   }
 
-  const { firstName, lastName, address, city, country, state, zipcode } = shippingAddress
+  const { fullName, email, address, city, country, state, zipcode } = shippingAddress
   const { cvc, expiry, name, number, focus } = creditCard
 
   return (
@@ -110,7 +110,8 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
           </div>
           <div className="payment__billing-address">
             <h3 className="payment__subtitle">Shipping/Billing Address</h3>
-            <p className="payment__text">{firstName} {lastName}</p>
+            <p className="payment__text"><strong>{email}</strong></p>
+            <p className="payment__text">{fullName}</p>
             <p className="payment__text">{address}, {country}</p>
             <p className="payment__text">{city}, {state}, {zipcode}</p>
             {/* <p className="payment__text">number maybe</p> */}

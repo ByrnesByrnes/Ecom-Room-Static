@@ -814,8 +814,10 @@ a {
 
 .loader:before {
   content: "";
-  height: 50px;
-  width: 50px;
+  height: 100%;
+  width: 100%;
+  max-height: 50px;
+  max-width: 50px;
   border: 6px solid black;
   border-color: black transparent;
   border-radius: 50%;
@@ -1925,6 +1927,7 @@ a {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
+  margin: 0 auto;
   margin-bottom: 20px;
 }
 
@@ -2005,6 +2008,13 @@ a {
 
 .payment__button:hover {
   background-color: crimson;
+}
+
+.payment__billing-address :nth-child(2) {
+  padding-top: 10px;
+  border-top: 2px solid lightgrey;
+  width: 100%;
+  max-width: 500px;
 }
 
 @media (min-width: 800px) {

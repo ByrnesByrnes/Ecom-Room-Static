@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 // import countryList from 'react-select-country-list' // NO working!
 import { StateContext } from '../../context/state'
 import { Loader } from '../../components'
+import { HiScale } from 'react-icons/hi';
 
 const { REACT_APP_SECRET_KEY } = process.env
 
 export default function ShippingForm({ setResults }) {
+  const [loading, setLoading] = useState(false)
   const [_, dispatch] = StateContext()
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    fullName: '',
+    email: '',
     address: '',
     city: '',
     country: '',
@@ -17,8 +19,8 @@ export default function ShippingForm({ setResults }) {
     zipcode: ''
   })
   const demo = {
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John Doe',
+    email: 'Johndoe@gmail.com',
     address: '300 Borough Dr',
     city: 'Scarborough',
     country: 'CA',
@@ -60,11 +62,12 @@ export default function ShippingForm({ setResults }) {
 
   const getShippingRates = async () => {
     try {
+      setLoading(true)
       const response = await fetch('https://api.easyship.com/rate/v1/rates', options)
       const data = await response.json()
       console.log(data)
       if(response.status === 200) {
-        
+        setLoading(false)
         setResults(data)
       }
 
@@ -83,31 +86,31 @@ export default function ShippingForm({ setResults }) {
 
   }
 
-  const { firstName, lastName, address, city, country, state, zipcode } = form
+  const { fullName, email, address, city, country, state, zipcode } = form
 
   return (
     <form action="" className="shipping-form" onSubmit={handleSubmit}>
       <div className="shipping-form__input-box">
-        <span className="shipping-form__label">First name</span>
+        <span className="shipping-form__label">Full Name</span>
         <input
           required
-          value={firstName}
+          value={fullName}
           onChange={handleForm}
-          name="firstName"
+          name="fullName"
           className="shipping-form__input"
           type="text"
         />
       </div>
 
       <div className="shipping-form__input-box">
-        <span className="shipping-form__label">Last name</span>
+        <span className="shipping-form__label">Email</span>
         <input
           required
-          value={lastName}
+          value={email}
           onChange={handleForm}
-          name="lastName"
+          name="email"
           className="shipping-form__input"
-          type="text"
+          type="email"
         />
       </div>
       <div className="shipping-form__address">
@@ -183,7 +186,7 @@ export default function ShippingForm({ setResults }) {
 
       </div>
       <div className="shipping-form__buttons">
-        <button className="shipping-form__button" type="submit">Get Rates</button>
+        <button className="shipping-form__button" type="submit">{loading ? <Loader /> :'Get Rates'}</button>
         <div className="shipping-form__demo">
           <button 
             onClick={() => setForm(demo)}

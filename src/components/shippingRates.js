@@ -7,7 +7,7 @@ export default function ShippingRates({ rates, setSelectedRate, message }) {
 
   return (
     <div className="shipping-rates">
-      {message && <div className="shipping-rates__post">{message[0]}</div> }
+      {message?.length >= 1 && <div className="shipping-rates__post">{message[0]}</div> }
       {rates ? rates.map((rate, i) => (
         <div 
           // When clicking component radio button should be selected

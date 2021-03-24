@@ -77,6 +77,7 @@ export default function Checkout() {
         <button onClick={() => history.push(ROUTES.CART)}>Back to cart</button>
         <Link to={ROUTES.PAYMENT} className="checkout__continue">Continue</Link>
       </div>
+
     </section>
   )
 

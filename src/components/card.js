@@ -13,8 +13,6 @@ export default function Card({ product, count, setCount }) {
     position: 0,
     zIndex: 0,
   })
-  
-  if(modal.display) console.log(modal)
 
   return (
     <div className="card">
