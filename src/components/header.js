@@ -3,7 +3,7 @@ import { Nav } from './index'
 import { HiOutlineShoppingCart,HiOutlineUser } from 'react-icons/hi'
 import { NavLink as Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
-
+import {BiRightArrow} from 'react-icons/bi'
 
 
 
@@ -49,12 +49,10 @@ export default function Header({ cart }) {
             <div 
               className={`header__dropdown ${dropdown ? 'open': ''}`}
             >
-              {/* Style Drop down menu */}
-              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>favorites</Link>
-              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>Profile</Link>
-              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.FAVORITES}>WishList</Link>
-              <Link onClick={() => setDropdown(false)} className="" to={ROUTES.ORDERS}>Your Orders</Link>
-            
+              <Link onClick={() => setDropdown(false)} className="header__dropdown__options" to={ROUTES.FAVORITES}>favorite<BiRightArrow/></Link>
+              <Link onClick={() => setDropdown(false)} className="header__dropdown__options" to={ROUTES.FAVORITES}>Profile<BiRightArrow/></Link>
+              <Link onClick={() => setDropdown(false)} className="header__dropdown__options" to={ROUTES.FAVORITES}>WishList<BiRightArrow/></Link>
+              <Link onClick={() => setDropdown(false)} className="header__dropdown__options" to={ROUTES.ORDERS}>Your Orders<BiRightArrow/></Link>
             </div>    
           </div>
           

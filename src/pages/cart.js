@@ -6,19 +6,14 @@ import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 import { useTransition, animated } from 'react-spring'
 
-export default function Cart({ config = { tension: 125, friction: 20, precision: 0.1 }, timeout = 3000, children }) {
+export default function Cart() {
   const [state, dispatch] = StateContext()
-  const [refMap] = useState(() => new WeakMap())
-  const [cancelMap] = useState(() => new WeakMap())
-  // const [items, setItems] = useState([])
 
-  const items  = state.cart
-
-  console.log(state.cart)
-  const transitions = useTransition(items, item => item.cartId, {
-    from: { transform: 'translate3d(0,-40px,0)' },
+  const transitions = useTransition(state.cart, item => item.cartId, {
+    from: { transform: 'translate3d(0,-100%,0)', opacity: 1, maxHeight: 300 },
     enter: { transform: 'translate3d(0,0px,0)' },
-    leave: { transform: 'translate3d(0,-40px,0)' },
+    leave: { transform: 'translate3d(0,0px,0)', opacity: 0, maxHeight: 0 },
+    trail: 300
   })
 
   return (
@@ -32,16 +27,11 @@ export default function Cart({ config = { tension: 125, friction: 20, precision:
                 <h3>Product</h3>
                 <h3>Price</h3>
               </div>
-              {/* {state.cart.map((product, i) => (
-                <CartItem key={i} product={product} />
-              ))} */}
-
-              {transitions.map(({ item, key, props }) =>
-                <animated.div key={key} style={props}>
-                  <CartItem product={item} />
-                </animated.div>
-              
-              )}
+                {transitions.map(({ item, key, props }) =>
+                  <animated.div key={key} style={props}>
+                    <CartItem product={item} />
+                  </animated.div>
+                )}
             </> : <div className="cart__empty">Your Cart is Empty</div>
           }
         </div>

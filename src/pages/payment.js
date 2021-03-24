@@ -18,7 +18,6 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
   })
 
   const handlePayment = () => {
-
     dispatch({
       type: "ADD_TO_ORDERS",
       payload: {
@@ -60,8 +59,7 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
 
           <div>
             <div id="paymentForm" className="payment__card">
-              <Cards
-                
+              <Cards              
                 cvc={cvc}
                 expiry={expiry}
                 name={name}
@@ -70,6 +68,7 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
               />
               <div className="payment__card-info">
                 <input
+                  required
                   type="tel"
                   name="number"
                   value={number}
@@ -78,6 +77,7 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
                   placeholder="Card Number"
                 />
                 <input
+                  required
                   type="text"
                   name="name"
                   value={name}
@@ -87,7 +87,8 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
                 />
                 <div>
                   <input
-                    type="tel"
+                    required
+                    type="number"
                     name="expiry"
                     value={expiry}
                     onFocus={handleFocus}
@@ -95,7 +96,8 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
                     placeholder="Expiry"
                   />
                   <input
-                    type="tel"
+                  required
+                    type="number"
                     name="cvc"
                     value={cvc}
                     onChange={handleChange}
@@ -107,7 +109,6 @@ export default function Payment({ cart, shippingAddress, shippingRate }) {
             </div>
           </div>
           <div className="payment__billing-address">
-
             <h3 className="payment__subtitle">Shipping/Billing Address</h3>
             <p className="payment__text">{firstName} {lastName}</p>
             <p className="payment__text">{address}, {country}</p>
