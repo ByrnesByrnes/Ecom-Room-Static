@@ -10,7 +10,7 @@ export default function Cart() {
   const [state, dispatch] = StateContext()
 
   const transitions = useTransition(state.cart, item => item.cartId, {
-    from: { transform: 'translate3d(0,-100%,0)', opacity: 1, maxHeight: 300 },
+    from: { transform: 'translate3d(0,-100%,0)', opacity: 1, maxHeight: 400 },
     enter: { transform: 'translate3d(0,0px,0)' },
     leave: { transform: 'translate3d(0,0px,0)', opacity: 0, maxHeight: 0 },
     trail: 300

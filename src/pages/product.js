@@ -7,6 +7,7 @@ import { Loader, AddToCart, Favorite, EditQuantity } from '../components'
 import { StateContext } from '../context/state'
 import { GetData } from '../api/getData'
 import * as ROUTES from '../constants/routes'
+// temporary fix when end point was changed
 import { fixImageUrl } from '../utils/fixImageUrl';
 
 export default function Product() {
@@ -21,7 +22,7 @@ export default function Product() {
     <section className="product">
       <div className="product__images">
         <span className="product__favorited"><Favorite product={product} /></span>
-        <img src={product.image && fixImageUrl(product.image)} alt={product.title} />
+        <img src={product.image && product.image} alt={product.title} />
       </div>
 
       <div className="product__content">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 import { AddToCart, Favorite, Modal } from '../components'
+// temporary fix when end point was changed
 import { fixImageUrl } from '../utils/fixImageUrl'
 
 
@@ -21,7 +22,7 @@ export default function Card({ product, count, setCount }) {
       </div>
       <Link to={`${ROUTES.BROWSE}/${product.id}`}>
         <div className="card__image">
-          <img src={fixImageUrl(product.image)} alt={product.description} />
+          <img src={product.image} alt={product.description} />
         </div>
         <h3 className="card__title">{product.title}</h3>
       </Link>

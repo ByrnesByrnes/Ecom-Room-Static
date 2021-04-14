@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { StateContext } from '../context/state'
 import {Link} from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 import { EditQuantity } from '../components'
+// temporary fix when end point was changed
 import {fixImageUrl} from '../utils/fixImageUrl'
 
 
@@ -20,7 +21,7 @@ export default function CartItem({ product, remove = true, quanPrice={}}) {
     <div className="cart-item">
       <div className="cart-item__left">
       <Link to={`${ROUTES.BROWSE}/${product.id}`}>
-        <img className="cart-item__image" src={fixImageUrl(product.image)} alt={product.title} />
+        <img className="cart-item__image" src={product.image} alt={product.title} />
       </Link>
         <div className="cart-item__content">
           <h4 className="cart-item__title">{product.title}</h4>

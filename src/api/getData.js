@@ -4,7 +4,7 @@ export function GetData(queries) {
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const baseUrl = 'https://fakestoreapi.herokuapp.com/products'
+  const baseUrl = 'https://fakestoreapi.com/products'
 
   const url = queries ? `${baseUrl}/${queries}` : baseUrl
   
